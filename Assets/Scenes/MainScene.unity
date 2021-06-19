@@ -196,6 +196,9 @@ MonoBehaviour:
   scoreEnemyText: {fileID: 1522105362}
   sceneChanger: {fileID: 296147265}
   pointAudio: {fileID: 17624895}
+  playerAnim: {fileID: 804241275}
+  enemyAnim: {fileID: 967136193}
+  ball: {fileID: 2052325842}
   scored: 0
 --- !u!82 &17624895
 AudioSource:
@@ -700,9 +703,11 @@ GameObject:
   - component: {fileID: 804241276}
   - component: {fileID: 804241275}
   - component: {fileID: 804241278}
+  - component: {fileID: 804241279}
+  - component: {fileID: 804241280}
   m_Layer: 0
   m_Name: PaddlePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -719,6 +724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 835c1a23ae321e240bc79fedde62dde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RbPlayer: {fileID: 804241280}
+  visionRadius: 1.3
 --- !u!212 &804241276
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -777,7 +784,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804241274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.72, y: 0.74, z: 0}
+  m_LocalPosition: {x: -7.66, y: 0.08, z: 0}
   m_LocalScale: {x: 1.1616687, y: 1.1616687, z: 1.1616687}
   m_Children: []
   m_Father: {fileID: 0}
@@ -796,7 +803,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.016189098, y: -0.52704084}
+  m_Offset: {x: 0.1421575, y: -0.48294115}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -807,8 +814,48 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.58783627, y: 1.4954486}
+  m_Size: {x: 0.5332339, y: 1.6892476}
   m_EdgeRadius: 0
+--- !u!95 &804241279
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804241274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3acb355cfd2e7a4eb4a7e703b9ddafa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &804241280
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804241274}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 10
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &967136189
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,9 +868,11 @@ GameObject:
   - component: {fileID: 967136190}
   - component: {fileID: 967136192}
   - component: {fileID: 967136193}
+  - component: {fileID: 967136194}
+  - component: {fileID: 967136195}
   m_Layer: 0
   m_Name: PaddleEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -931,9 +980,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 2052325843}
-  speed: 0.06
-  factor: 0.01
   playerScore: {fileID: 17624894}
+  RbEnemy: {fileID: 967136195}
+  speed: 0.04
+  factor: 0.02
+  visionRadius: 1.5
+--- !u!95 &967136194
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967136189}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8778c81afac915499e5eeca1e93cfcc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &967136195
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967136189}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 10
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1225791792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1235,9 @@ MonoBehaviour:
   scoreEnemyText: {fileID: 1522105362}
   sceneChanger: {fileID: 296147265}
   pointAudio: {fileID: 17624895}
+  playerAnim: {fileID: 804241275}
+  enemyAnim: {fileID: 967136193}
+  ball: {fileID: 2052325842}
   scored: 0
 --- !u!82 &1532919470
 AudioSource:
@@ -1502,7 +1596,7 @@ GameObject:
   - component: {fileID: 2052325848}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1565,7 +1659,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052325841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.17, y: 0.01, z: 0}
+  m_LocalPosition: {x: -6.93, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1585,8 +1679,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RbBall: {fileID: 2052325846}
   paddle: {fileID: 804241277}
-  gameStarted: 0
   ballAudio: {fileID: 2052325847}
+  sprite: {fileID: 2052325842}
+  gameStarted: 0
+  maxDownSpeed: -40
+  maxUpSpeed: 40
+  maxDownAngle: -90
+  maxUpAngle: 90
 --- !u!58 &2052325845
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1600,9 +1699,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.30002117, y: 0}
+  m_Offset: {x: 0.5400467, y: 0}
   serializedVersion: 2
-  m_Radius: 0.23594332
+  m_Radius: 0.337533
 --- !u!50 &2052325846
 Rigidbody2D:
   serializedVersion: 4
@@ -1644,7 +1743,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.0864239
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
